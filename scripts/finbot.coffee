@@ -8,7 +8,16 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
-{Config} = require './environment'
+Config = {
+  appveyor: {
+    token: process.env.APPVEYOR_TOKEN
+    account: process.env.APPVEYOR_ACCOUNT,
+    webhook: {
+      token: process.env.APPVEYOR_WEBHOOK_TOKEN
+    }
+  },
+  announce_channel: "#finbot-announce"
+}
 
 module.exports = (robot) ->
 
@@ -33,7 +42,27 @@ module.exports = (robot) ->
         
         link = "https://ci.appveyor.com/project/#{Config.appveyor.account}/#{projectSlug}/build/#{o.version}"
 
-        res.reply "Started build of '#{projectSlug}' v#{o.version}: #{link}"
+        # create the message with attachment object
+        msgData = {
+          channel: res.message.room
+          text: "Build started"
+          attachments: [
+            {
+              fallback: "Started build of '#{projectSlug}' v#{o.version}: #{link}",
+              title: "Started build of '#{projectSlug}'",
+              title_link: link
+              text: "v#{o.version}"
+              color: "#7CD197"
+            }
+          ]
+        }
+
+        # post the message
+        robot.adapter.customMessage msgData
+
+        # res.reply "Started build of '#{projectSlug}' v#{o.version}: #{link}"
+
+        robot.brain.set "#{projectSlug}/#{o.version}", JSON.stringify({username: res.message.user.name})
 
   robot.router.post '/hubot/appveyor/webhook', (req, res) ->
     auth = req.headers.authorization
@@ -41,8 +70,14 @@ module.exports = (robot) ->
 
     data = if req.body.payload? then JSON.parse req.body.payload else req.body
     outcome = if data.eventName == 'build_success' then 'succeeded' else 'failed' 
+    
+    msg = "Build v#{data.eventData.buildVersion} of '#{data.eventData.projectName} #{outcome}."
+    value = robot.brain.get "#{data.eventData.projectName}/#{data.eventData.buildVersion}"
+    if value
+      o = JSON.parse(value)
+      msg += " @#{o.username}"
 
-    robot.messageRoom Config.announce_channel, "Build #{data.eventData.buildNumber} of #{data.eventData.projectName} #{outcome}."
+    robot.messageRoom Config.announce_channel, msg
 
     res.send 'OK'
 
