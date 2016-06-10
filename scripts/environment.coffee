@@ -3,8 +3,7 @@ module.exports.Config = {
     token: process.env.APPVEYOR_TOKEN
     account: process.env.APPVEYOR_ACCOUNT,
     webhook: {
-      username: process.env.APPVEYOR_WEBHOOK_USERNAME,
-      password: process.env.APPVEYOR_WEBHOOK_PASSWORD
+      token: process.env.APPVEYOR_WEBHOOK_TOKEN
     }
   },
   announce_channel: "#finbot-announce"

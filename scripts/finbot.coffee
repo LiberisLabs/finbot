@@ -36,15 +36,16 @@ module.exports = (robot) ->
         res.reply "Started build of '#{projectSlug}' v#{o.version}: #{link}"
 
   robot.router.post '/hubot/appveyor/webhook', (req, res) ->
-    auth = req.headers.authorization
+    console.log(req.headers.authorization)
+    # auth = req.headers.authorization
     
-    return res.send 403 unless auth
+    # return res.send 403 unless auth
 
-    auth_parts = auth.split(':')
-    return res.send 403 unless auth_parts.length == 2 and auth_parts[0] is Config.appveyor.webhook.username
+    # auth_parts = auth.split(':')
+    # return res.send 403 unless auth_parts.length == 2 and auth_parts[0] is Config.appveyor.webhook.username
 
-    decoded_password = Buffer.from(auth_parts[1], 'base64');
-    return res.send 403 unless decoded_password is Config.appveyor.webhook.password
+    # decoded_password = Buffer.from(auth_parts[1], 'base64');
+    # return res.send 403 unless decoded_password is Config.appveyor.webhook.password
 
     data = if req.body.payload? then JSON.parse req.body.payload else req.body
     outcome = if data.eventName == 'build_success' then 'succeeded' else 'failed' 
