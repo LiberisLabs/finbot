@@ -35,6 +35,13 @@ module.exports = (robot) ->
 
         res.reply "Started build of '#{projectSlug}' v#{o.version}: #{link}"
 
+  robot.router.post '/hubot/appveyor/webhook', (req, res) ->
+    data = if req.body.payload? then JSON.parse req.body.payload else req.body
+    outcome = if data.eventName == 'build_success' then 'succeeded' else 'failed' 
+
+    robot.messageRoom Config.announce_channel, "Build #{data.eventData.buildNumber} of #{data.eventData.projectName} #{outcome}."
+
+    res.send 'OK'
 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
