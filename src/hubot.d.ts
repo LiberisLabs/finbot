@@ -2,7 +2,7 @@ declare module "hubot" {
   import * as express from 'express';
 
   interface IHttpResponse {
-
+    statusCode: number;
   }
 
   interface IScopedHttpClient {
