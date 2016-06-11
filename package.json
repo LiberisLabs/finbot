@@ -14,7 +14,16 @@
     "heroku-postbuild": "npm run build"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": ">=4.0"
+  },
+  "keywords": [
+    "hubot",
+    "deploy",
+    "bot",
+    "fintech"
+  ],
+  "bugs": {
+    "url": "https://github.com/LiberisLabs/finbot/issues"
   },
   "dependencies": {
     "hubot": "^2.19.0",
@@ -30,5 +39,9 @@
   "devDependencies": {
     "ava": "^0.15.2",
     "sinon": "^1.17.4"
-  }
+  },
+  "contributors": [
+    "David Wood <david.p.wood@gmail.com> (https://www.codesleuth.co.uk/)",
+    "Joshua Hawxwell <m@hawx.me> (http://hawx.me/)"
+  ]
 }
