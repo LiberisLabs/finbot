@@ -9,7 +9,9 @@
     "url": "https://github.com/LiberisLabs/finbot.git"
   },
   "scripts": {
-    "build": "rimraf lib scripts test && tsc -p src/",
+    "clean": "rimraf lib scripts test",
+    "prebuild": "npm run clean",
+    "build": "tsc -p src/",
     "test": "ava",
     "heroku-postbuild": "npm run build"
   },

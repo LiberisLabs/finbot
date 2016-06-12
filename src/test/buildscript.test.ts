@@ -53,7 +53,7 @@ test('finbot > starts a build', (t) => {
   const postStub = sinon.stub(httpClient, 'post');
 
   postStub.returns((handler: IHttpClientHandler) => {
-    handler(null, { statusCode: 200 }, `{"version":"${version}"}`);
+    handler(null, { statusCode: 200 }, JSON.stringify({ version: version}));
   });
 
   respondStub.callsArgWith(1, response);
