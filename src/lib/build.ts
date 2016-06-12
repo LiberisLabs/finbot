@@ -11,7 +11,7 @@ export default (robot: IRobot) => {
       accountName: Config.appveyor.account,
       projectSlug: projectSlug
     });
-    
+
     res.reply('One moment please...');
 
     robot.http('https://ci.appveyor.com/api/builds')
