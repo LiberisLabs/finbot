@@ -1,4 +1,5 @@
 import { IRobot } from 'hubot';
+import { ISlackAdapter, ICustomMessage } from 'hubot-slack';
 import { Config } from '../lib/config';
 
 export default (robot: IRobot) => {
@@ -26,7 +27,7 @@ export default (robot: IRobot) => {
         const link = `https://ci.appveyor.com/project/${Config.appveyor.account}/${projectSlug}/build/${o.version}`
 
         // create the message with attachment object
-        let msgData = {
+        let msgData: ICustomMessage = {
           channel: res.message.room,
           text: 'Build started',
           attachments: [
@@ -40,8 +41,10 @@ export default (robot: IRobot) => {
           ]
         };
 
+        const slackAdapter = robot.adapter as ISlackAdapter;
+
         // post the message
-        robot.adapter.customMessage(msgData);
+        slackAdapter.customMessage(msgData);
 
         robot.brain.set(`${projectSlug}/${o.version}`, JSON.stringify({ username: res.message.user.name }));
     });

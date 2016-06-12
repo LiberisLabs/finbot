@@ -5,9 +5,13 @@ declare module "hubot" {
     statusCode: number;
   }
 
+  interface IHttpClientHandler {
+    (err: Error, res: IHttpResponse, body: string): void;
+  }
+
   interface IScopedHttpClient {
     header(name: string, value: string): IScopedHttpClient;
-    post(body: string): (handler: (err: Error, res: IHttpResponse, body: string) => void) => void;
+    post(body: string): (handler: IHttpClientHandler) => void;
   }
 
   interface IMessageDetail {
@@ -33,8 +37,12 @@ declare module "hubot" {
     set(key: string, value: string);
   }
 
+  interface IAdapter {
+
+  }
+
   interface IRobot {
-    adapter: any;
+    adapter: IAdapter;
     brain: IRobotBrain;
     router: express.Application;
 
