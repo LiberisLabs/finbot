@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "ava": "^0.15.2",
+    "express": "^3.21.2",
     "sinon": "^1.17.4"
   },
   "contributors": [
