@@ -8,13 +8,6 @@
     "type": "git",
     "url": "https://github.com/LiberisLabs/finbot.git"
   },
-  "scripts": {
-    "clean": "rimraf lib scripts test",
-    "prebuild": "npm run clean",
-    "build": "tsc -p src/",
-    "test": "ava",
-    "heroku-postbuild": "npm run build"
-  },
   "engines": {
     "node": ">=4.4"
   },
@@ -30,20 +23,12 @@
   "dependencies": {
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.1",
+    "hubot-finbot": "^0.0.1",
     "hubot-help": "^0.2.0",
     "hubot-heroku-keepalive": "^1.0.2",
     "hubot-redis-brain": "0.0.3",
     "hubot-scripts": "^2.17.2",
-    "hubot-slack": "^3.4.2",
-    "rimraf": "^2.5.2",
-    "source-map-support": "^0.4.0",
-    "typescript": "^1.8.10"
-  },
-  "devDependencies": {
-    "ava": "^0.15.2",
-    "express": "^3.21.2",
-    "rimraf": "^2.5.2",
-    "sinon": "^1.17.4"
+    "hubot-slack": "^3.4.2"
   },
   "contributors": [
     "David Wood <david.p.wood@gmail.com> (https://www.codesleuth.co.uk/)",
