@@ -23,7 +23,7 @@
   "dependencies": {
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.1",
-    "hubot-finbot": "^0.0.5",
+    "hubot-finbot": "^0.0.6",
     "hubot-help": "^0.2.0",
     "hubot-heroku-keepalive": "^1.0.2",
     "hubot-redis-brain": "0.0.3",
@@ -33,7 +33,7 @@
   },
   "contributors": [
     "David Wood <david.p.wood@gmail.com> (https://www.codesleuth.co.uk/)",
-    "Joshua Hawxwell <m@hawx.me> (http://hawx.me/)",
+    "Joshua Hawxwell <m@hawx.me> (https://hawx.me/)",
     "Lee Blundell <leeblundell16@gmail.com> (https://blundell89.github.io/)"
   ]
 }
