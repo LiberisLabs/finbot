@@ -1,6 +1,6 @@
 {
   "name": "finbot",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "author": "David Wood <david.p.wood@gmail.com>",
   "description": "A simple helpful robot for your Company",
@@ -9,7 +9,7 @@
     "url": "https://github.com/LiberisLabs/finbot.git"
   },
   "engines": {
-    "node": ">=4.4"
+    "node": ">=5.11.1"
   },
   "keywords": [
     "hubot",
@@ -23,7 +23,7 @@
   "dependencies": {
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.1",
-    "hubot-finbot": "^0.0.3",
+    "hubot-finbot": "^0.0.5",
     "hubot-help": "^0.2.0",
     "hubot-heroku-keepalive": "^1.0.2",
     "hubot-redis-brain": "0.0.3",
@@ -32,6 +32,7 @@
   },
   "contributors": [
     "David Wood <david.p.wood@gmail.com> (https://www.codesleuth.co.uk/)",
-    "Joshua Hawxwell <m@hawx.me> (http://hawx.me/)"
+    "Joshua Hawxwell <m@hawx.me> (http://hawx.me/)",
+    "Lee Blundell <leeblundell16@gmail.com> (http://blundell89.github.io/)"
   ]
 }
