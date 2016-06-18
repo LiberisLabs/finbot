@@ -3,6 +3,6 @@
   "hubot-help",
   "hubot-heroku-keepalive",
   "hubot-redis-brain",
-  "hubot-finbot",
+  "hubot-appveyor",
   "hubot-uuid"
 ]
